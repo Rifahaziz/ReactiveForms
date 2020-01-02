@@ -1,0 +1,53 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+  
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <input formControlName="name" placeholder="Your name....">
+  <p>Your Name is : {{ myForm.get('name').value}}</p>
+  <div *ngIf="myForm.get('name').hasError('required')" >
+    Name not valid!
+  </div>
+  <input formControlName="email" placeholder="Your email....">
+  
+  <input formControlName="message" placeholder="Your message....">
+  
+  <button type="submit" [disabled]="myForm.invalid">Send</button>
+</form>
+<br>
+<br>
+<br>
+
+
+<form [formGroup]="bform" (ngSubmit)="bSubmit(bform)">
+  <input formControlName="name" placeholder="name here...">
+  <div *ngIf="!bform.controls['name'].valid && bform.controls['name']?.touched">
+    Name not valid!
+  </div>
+  <input formControlName="email" placeholder="email here...">
+  <div *ngIf="bform.controls.email.hasError('pattern')">
+    Oops, wrong pattern buddy!
+  </div>
+  <input formControlName="message" placeholder="Your message....">
+  <div *ngIf="bform.controls.message.errors.minlength">
+    Write something longer please!
+  </div> 
+  
+  <button type="submit" [disabled]="bform.invalid">Save</button>
+</form>
+<!-- <router-outlet></router-outlet> -->
